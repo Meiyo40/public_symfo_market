@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes adresses - SymfonyMarket{% endblock %}
+
+{% block content %}
+    <h1>Mes adresses ({{ app.user.firstname }} {{ app.user.lastname }})</h1>
+    <a href="{{ path('account') }}">Retour à mon compte.</a>
+    <a href="{{ path('account_address_add') }}" class="btn btn-info btn-sm float-right mb-3">Ajouter une adresse.</a>
+    <hr>
+    <div id="addresses-container" class="mb-5">
+        {% if app.user.addresses|length > 0 %}
+            <div class="row">
+                {% for address in app.user.addresses %}
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ address.name }}</h5>
+                                <p class="card-text">
+                                    {{ address.address}} <br>
+                                    {{ address.postal }} - {{ address.city }} - {{ address.country }}
+                                </p>
+                                <a href="{{ path('account_address_edit', {'id':address.id}) }}" class="btn btn-primary">Modifier</a>
+                                <a href="{{ path('account_address_remove', {'id': address.id}) }}" class="btn btn-warning">Supprimer</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <strong>Vous n'avez pas encore d'adresse. Pour en ajouter une, <a href="{{ path('account_address_add') }}">cliquez ici.</a></strong>
+        {% endif %}
+    </div>
+
+{% endblock %}

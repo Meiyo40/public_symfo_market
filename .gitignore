@@ -52,5 +52,10 @@
 # Embedded web-server pid file
 /.web-server-pid
 
+.env
+.env.test
 .idea
+symfony.lock
 /public/uploads/
+/public/bundles
+/src/entity

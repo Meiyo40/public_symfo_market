@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte - SymfonyMarket{% endblock %}
+
+{% block content %}
+    <h1>Mon compte ({{ app.user.firstname }} {{ app.user.lastname }})</h1>
+    <hr>
+    <ul>
+        <li>
+            <a href="{{ path('account_password') }}">Changer son mot de passe</a>
+        </li>
+        <li>
+            <a href="{{ path('account_address') }}">Gérer mes adresses.</a>
+        </li>
+    </ul>
+    <hr>
+{% endblock %}
